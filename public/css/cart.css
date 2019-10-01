@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+body {
+  background: #1B6E74;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+h4 {
+  color: #000;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 22px;
+}
+
+h5 {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+h4 span {
+  font-size: 20px !important;
+}
+
+p {
+  color: #2E86C1;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li a {
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  background: #1B6E74;
+}
+
+ul li a:nth-child(3) {
+  background: green;
+}
+
+.btn-custom {
+  background: #1B6E74;
+  ;
+  color: #fff;
+}
+
+.btn-custom:hover {
+  background: rgb(19, 77, 82);
+  ;
+  color: #fff;
+}
+
+.color-group {
+  width: 5%;
+  display: inline-block;
+  display: -webkit-inline-box;
+  padding-top: 5px;
+}
+
+img {
+  width: 35%;
+}
+
+.color-block {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: 1px;
+  padding-bottom: 100%;
+}
+
+.fa {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.fa-edit {
+  color: #007bff;
+}
+
+.fa-trash-o {
+  color: #dc3545;
+}
+
+.effects {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #888f96;
+}
+
+.effects:hover {
+  background: #ece0c2;
+  transition: .4s;
+  color: #000;
+  cursor: pointer;
+  transform: scale(1.03);
+  border: 1px solid #f7f3f3;
+  border-radius: 8px;
+}
+
+@media(max-width: 768px) {
+  .effects {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .color-group {
+    margin-right: 27%;
+    float: none;
+    text-align: center;
+  }
+
+  .text-success {
+    color: #ece0c2;
+  }
+
+  .pull-right {
+    float: none;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .effects {
+    background: #8049165e;
+    border-radius: 8px;
+    margin: 10px;
+    
+  }
+
+  .col-md-3 h4:nth-child(1) {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+  .fa {
+    padding: 5px;
+
+  }
+
+  img {
+    width: 45%;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h3 {
+    font-size: 15px;
+    color: #1B6E74;
+  }
+
+  .color-group {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+}
+#tituloCart{
+    text-align: center;
+    color: #000;
+}
+
+.btn-custom{
+    min-width: 76px;
+}
