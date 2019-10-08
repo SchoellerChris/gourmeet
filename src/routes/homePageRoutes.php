@@ -14,8 +14,9 @@ return function (App $app) {
 
         $resultSet = $conexao->query('SELECT * FROM categoria')->fetchAll();
 
-        $args['categoriaId']=$resultSet;
+        $args['categorias']=$resultSet;
 
+       
         
 
         // Render index view
