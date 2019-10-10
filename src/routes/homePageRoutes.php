@@ -15,7 +15,11 @@ return function (App $app) {
         // Busca todas as categorias
         $resultSet = $conexao->query('SELECT * FROM categoria')->fetchAll();
 
+
         $args['categorias'] = $resultSet;
+
+        
+
         
 
         if ($args['idCategoria']) {
