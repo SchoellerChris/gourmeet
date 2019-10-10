@@ -1,5 +1,6 @@
 body{
     overflow: hidden;
+  
 }
 @media (min-width: 320px)
 {
@@ -86,6 +87,7 @@ a:link{
 
 .titulo{
     font-size: 200%;
+    text-transform: capitalize;
 }
 
 #cardapio2{
@@ -116,6 +118,9 @@ h3{
 .menus:hover{
     background-color: rgb(22, 78, 83);
     cursor: pointer;
+}
+.menus a h4:hover {
+    color: #fafafa;
 }
 #pratos{
     
