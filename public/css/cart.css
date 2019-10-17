@@ -182,3 +182,9 @@ img {
 .btn-custom{
     min-width: 76px;
 }
+input{
+  width: 50px;
+  border: 0.02px solid #d1d0d0;
+  text-align: center;
+}
+

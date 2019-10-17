@@ -1,23 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/jquery/jquery.js"></script>       
+        
+        <title>Gourmeet - Cardápio</title>
+    </head>
+    
+    <body>
+        
+        <div class="container-fluid">
+          
+        <!-- Inicio MODAL-->
+        <!-- Modal -->
+        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Opções do prato</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div><LABEL>Selecione a quantidade:</LABEL>
+                        <div>
+                    	<div class="qty mt-5" id="divInput">
+                        <span class="minus bg-dark">-</span>
+                        <input type="number" class="count" name="qty" value="1">
+                        <span class="plus bg-dark">+</span>
+                    </div>
+                    
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+                </div>
+            </div>
+        </div>
 
 
-    <title>Gourmeet - Cardápio</title>
-</head>
 
-<body>
+        
+        <!-- FIM MODAL-->
 
-    <div class="container-fluid">
-        <div class="row">
+            <div class="row">
             <div id="fora" class="col-sm-5 col-md-6 col-lg-5 col-xl-5">
 
                 <div class="row text-white cardapio">
@@ -25,7 +64,7 @@
                         <a href="/">
                             <h1 class="titulo">Cardápio</h1>
                         </a>
-
+                
                     </div>
 
                     <?php
@@ -77,13 +116,15 @@
                                             echo "<label class= 'mr-4'>";
                                             echo "R$ " . $value['precoProduto'];
                                             echo "</label>";
-                                            echo "<button type='button' class='btn btn-primary '>";
+                                            echo "<a href='/cart/".  $value['idProduto']   ."' class='btn btn-primary'>";
                                             echo "Adicionar";
-                                            echo "</button>";
+                                            echo "</a>";
                                             echo "</div>";
                                         }
                                         ?>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -94,11 +135,10 @@
         </div>
 
     </div>
-
+    
 </body>
 
-<script src="vendor/jquery/jquery-3.4.1.min.js"></script>
-<script src="vendor/bootstrap/css/bootstrap.min.css"></script>
-<script src="vendor/fontawesome/css/fontawesome.min.css"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/jquery/script.js"></script>
 
 </html>
