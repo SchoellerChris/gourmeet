@@ -1,5 +1,6 @@
 body{
     overflow: hidden;
+ 
 }
 @media (min-width: 320px)
 {
@@ -96,6 +97,7 @@ a:link{
 h1{
   text-align: center;  
   font-family: 'Montserrat', sans-serif;
+
 }
 h4{
     text-align: center;
@@ -269,7 +271,10 @@ input::-webkit-inner-spin-button {
 input:disabled{
     background-color:white;
 }
-.divInput{
-    
-}
-         
+
+
+/**
+ * ----------------------------------------
+ * CÓDIGOS WEBKIT
+ * ----------------------------------------
+ */

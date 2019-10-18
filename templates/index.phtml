@@ -19,43 +19,7 @@
     <body>
         
         <div class="container-fluid">
-          
-        <!-- Inicio MODAL-->
-        <!-- Modal -->
-        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Opções do prato</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div><LABEL>Selecione a quantidade:</LABEL>
-                        <div>
-                    	<div class="qty mt-5" id="divInput">
-                        <span class="minus bg-dark">-</span>
-                        <input type="number" class="count" name="qty" value="1">
-                        <span class="plus bg-dark">+</span>
-                    </div>
-                    
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    
-                    <button type="button" class="btn btn-primary">Confirmar</button>
-                </div>
-                </div>
-            </div>
-        </div>
-
-
-
         
-        <!-- FIM MODAL-->
-
             <div class="row">
             <div id="fora" class="col-sm-5 col-md-6 col-lg-5 col-xl-5">
 
@@ -91,7 +55,7 @@
                                 echo  "<h1 class='titulo'>".$categoriaAtual[0]['nomeCategoria']."</h1>";
                             ?>
 
-                            <a href="cart/">
+                            <a href="cartview/">
                                 <i class="fas fa-shopping-cart mr-5"></i>
                             </a>
 
@@ -114,7 +78,7 @@
                                             echo "</div>";
                                             echo "<div class='col-12 botao pb-5'>";
                                             echo "<label class= 'mr-4'>";
-                                            echo "R$ " . $value['precoProduto'];
+                                            echo "R$ " .$value['precoProduto'];
                                             echo "</label>";
                                             echo "<a href='/cart/".  $value['idProduto']   ."' class='btn btn-primary'>";
                                             echo "Adicionar";

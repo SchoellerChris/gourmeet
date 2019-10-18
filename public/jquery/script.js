@@ -1,16 +1,34 @@
+$('.btn-number').click(function(e){
+    e.preventDefault();
+    
+    fieldName = $(this).attr('data-field');
+    type      = $(this).attr('data-type');
+    var input = $("input[name='"+fieldName+"']");
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+        if(type == 'minus') {
+            
+            if(currentVal > input.attr('min')) {
+                input.val(currentVal - 1).change();
+            } 
+            if(parseInt(input.val()) == input.attr('min')) {
+                $(this).attr('disabled', true);
+            }
 
-$(document).ready(function () {
-    $(document).ready(function(){
-        $('.count').prop('disabled', true);
-           $(document).on('click','.plus',function(){
-            $('.count').val(parseInt($('.count').val()) + 1 );
-        });
-        $(document).on('click','.minus',function(){
-            $('.count').val(parseInt($('.count').val()) - 1 );
-                if ($('.count').val() == 0) {
-                    $('.count').val(1);
-                }
-            });
-     });
+        } else if(type == 'plus') {
+
+            if(currentVal < input.attr('max')) {
+                input.val(currentVal + 1).change();
+            }
+            if(parseInt(input.val()) == input.attr('max')) {
+                $(this).attr('disabled', true);
+            }
+
+        }
+    } else {
+        input.val(0);
+    }
 });
-
+$('.input-number').focusin(function(){
+   $(this).data('oldValue', $(this).val());
+});
