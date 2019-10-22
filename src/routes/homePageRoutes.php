@@ -20,7 +20,7 @@ return function (App $app) {
 
         
 
-        
+            
 
         if ($args['idCategoria']) {
 
@@ -33,12 +33,12 @@ return function (App $app) {
             
         } else {
 
-            $resultSet = $conexao->query('SELECT * FROM produto where idCategoria = 1')->fetchAll();
+            $resultSet = $conexao->query('SELECT * FROM produto where ehDestaque=1')->fetchAll();
             $args['categoriaAtual'][] = array('nomeCategoria' => 'Destaques');
 
         }
-
         $args['produtos'] = $resultSet;
+
 
 
 

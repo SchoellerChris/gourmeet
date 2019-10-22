@@ -64,9 +64,9 @@
                                     <div class="row">
                                         <?php
                                         foreach ($produtos as $key => $value) {
-
+                                            
                                             echo "<div class='col-4 p-1'>";
-                                            echo "<img class='imagensComidas pb-4' src='" . $value['imgProduto'] . "'>";
+                                            echo "<img class='imagensComidas pb-4' src='".$value['imgProduto'] ."'>";
                                             echo "</div>";
                                             echo "<div class='col-8'>";
                                             echo "<h3>";
@@ -80,7 +80,7 @@
                                             echo "<label class= 'mr-4'>";
                                             echo "R$ " .$value['precoProduto'];
                                             echo "</label>";
-                                            echo "<a href='/cart/".  $value['idProduto']   ."' class='btn btn-primary'>";
+                                            echo "<a href='/cart/".$value['idProduto']."' class='btn btn-primary'>";
                                             echo "Adicionar";
                                             echo "</a>";
                                             echo "</div>";
