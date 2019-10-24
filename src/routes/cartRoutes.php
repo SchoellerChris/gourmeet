@@ -34,17 +34,37 @@ return function (App $app) {
         $container->get('logger')->info("Slim-Skeleton '/' route");
         $conexao = $container->get('pdo');
 
-        $resultSet = $conexao->query('SELECT * from produto where idProduto =' . $args['idproduto'] . '')->fetchAll();
 
+        // if (array_search($args['idproduto'], $_SESSION['compraUltimoProduto']) == FALSE) {
+        // Primeira adição do produto no carrinho
+
+        $resultSet = $conexao->query('SELECT * from produto where idProduto =' . $args['idproduto'] . '')->fetchAll();
+        $resultSet[0]['qtdProduto'] = 1;
 
         $_SESSION['produtos'][] = $resultSet;
 
-
+        #função de soma do carrinho.
         $somaTotal = 0;
         foreach ($_SESSION['produtos'] as $key => $value) {
             $somaTotal += $value[0]['precoProduto'];
+            $_SESSION['totalCompra'] = $somaTotal;
         }
-        $_SESSION['totalCompra'] = $somaTotal;
+
+        //     } //else { 
+        // Segunda a diante adições do produto ao carrinho
+
+        //foreach ($_SESSION['produtos'] as $key => $value) {
+        //    echo "<pre>";
+        //    print_r($value);
+        //    if ($_SESSION['produtos'][$key][0]['idProduto'] == $args['idproduto']) {
+        //          $_SESSION['produtos'][$key][0]['qtdProduto'] = $value[0]['qtdProduto'] + 1;
+        //    }
+        //   }
+
+        //  }
+
+        $_SESSION['compraUltimoProduto'][] = $args['idproduto'];
+
 
         return $container->get('renderer')->render($response, 'cart.phtml', $args);
     });

@@ -271,7 +271,13 @@ input::-webkit-inner-spin-button {
 input:disabled{
     background-color:white;
 }
-
+#quantidadeCart{
+text-align: center;
+}
+#imgCart{
+    height: 100%;
+    width: 100%;
+}
 
 /**
  * ----------------------------------------

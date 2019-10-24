@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/vendor/fontawesome/css/fontawesome.min.css">
   <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -70,45 +71,34 @@
       </div>
     </div>
 
-
-
-
-
     <?php
     foreach ($_SESSION['produtos'] as $key => $value) {
 
       echo "<div class='row p-3 effects'>";
-      echo "<div class='col-md-3'>";
-      echo "<img src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";
-      echo "</div>";
-      echo "<div class='col-md-3'>";
-      echo "<h4>" . $value[0]['nomeProduto'] . "</h4>";
-      echo "</div>";
-      echo "<div class='col-md-3'>";
-      echo "<div>";
-      echo "<span class='minus bg-dark'>" . "</span>";
-      echo " <input type='number' class='count' name='qty' value='1'>";
-      echo "<span class='plus bg-dark'>"."</span>";
-      echo "</div>";
-      echo "</div>";
-      echo "<div class='col-md-3'>";
-      echo "<h5>" . "R$ " . $value[0]['precoProduto'] . "</h5>";
-      echo "</div>";
-      echo "<div class='color-group'>";
-      echo "</div>";
+        echo "<div class='col-md-3'>";
+          echo "<img id='imgCart' src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";
+        echo "</div>";
+        echo "<div class='col-md-2'>";
+         echo "<h4>" . $value[0]['nomeProduto'] . "</h4>";
+        echo "</div>";
+        echo "<div id='quantidadeCart'class='col-md-1 col-sm-1 col-1'>";
+          echo "<div>";
+            echo "<span class='minus bg-dark'>" . "</span>";
+            echo "<input id='quantidade' type='number' class='count form-control' name='qty' value='".$value[0]['qtdProduto']."'>";
+            echo "<span class='plus bg-dark'>"."</span>";
+          echo "</div>";
+        echo "</div>";
+        echo "<div class='col-md-3'>";
+          echo "<h5>" . "R$ " . $value[0]['precoProduto'] . "</h5>";
+          echo "</div>";
+          echo"<i class='fas fa-trash'></i>";
+        echo "<div class='color-group'>";
+        echo "</div>";
       echo "</div>";
       
     }
     ?>
-    <?php
-      $soma = 0;
-      foreach ($_SESSION['produtos'] as $key => $value){
-         (float)$soma += (float)$value[0]['precoProduto'];
-        }
-        $_SESSION['totalCompra'] = $soma;
-
-
-    ?>
+   
   </div>
 </body>
 
