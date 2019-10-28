@@ -21,8 +21,9 @@ return function (App $app) {
         
 
             
+        
 
-        if ($args['idCategoria']) {
+        if (isset($args['idCategoria'])) {
 
             // Busca produtos da categoria atual
             $resultSet = $conexao->query('SELECT * FROM produto where idCategoria = ' . $args['idCategoria'])->fetchAll();
