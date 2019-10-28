@@ -41,10 +41,8 @@ return function (App $app) {
 
         $resultSet = $conexao->query('SELECT * from produto where idProduto =' . $args['idproduto'] . '')->fetchAll();
         $resultSet[0]['qtdProduto'] = 1;
-        $_SESSION['idProdutoCarrinho'] = $args['idproduto'];
 
         $_SESSION['produtos'][] = $resultSet;
-
 
         #função de soma do carrinho.
         $somaTotal = 0;
@@ -53,7 +51,7 @@ return function (App $app) {
             $_SESSION['totalCompra'] = $somaTotal;
         }
 
-
+       
 
         $_SESSION['compraUltimoProduto'][] = $args['idproduto'];
 
@@ -64,13 +62,13 @@ return function (App $app) {
     //apagar item selecionado do carrinho 
     //terminar antes de enviar
     //$app->get('/cartapagaritem/', function (Request $request, Response $response, array $args) use ($container) {
-    // Sample log message
-    //       $container->get('logger')->info("Slim-Skeleton '/' route");
+        // Sample log message
+ //       $container->get('logger')->info("Slim-Skeleton '/' route");
 
     //    session_destroy();
 
-    //   return $response->withRedirect('http://localhost:8888');
-    //   });
+     //   return $response->withRedirect('http://localhost:8888');
+ //   });
 
     $app->get('/cartlimpar/', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
@@ -81,17 +79,20 @@ return function (App $app) {
         return $response->withRedirect('http://localhost:8888');
     });
 
+   
 
-
-    $app->get('/salvarpedido/', function (Request $request, Response $response, array $args) use ($container) {
+    $app->post('/salvarpedido/', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/' route");
-        $conexao = $container->get('pdo');
+       $container->get('logger')->info("Slim-Skeleton '/' route");
+       $conexao = $container ->get('pdo');
 
+      
+    
+        $conexao->query("INSERT INTO pedido (precoPedido) VALUES (19);");
 
-        $conexao->query("INSERT INTO pedido (idProduto, precoPedido) VALUES (" . (int) $_SESSION['idProdutoCarrinho'] . ", " . (float) $_SESSION['totalCompra'] . ")");
+        
 
-
-        return $response->withRedirect('http://localhost:8888');
+        return $container->get('renderer')->render($response, 'index.phtml', $args);
     });
+
 };

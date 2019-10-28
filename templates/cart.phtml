@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
   
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -49,7 +50,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar Pedido</button>
+        <a href="/salvarpedido/"><button type="button" class="btn btn-primary">Confirmar Pedido</button></a>
         <a href="/cartlimpar/"><button type="button" class="btn btn-primary">Fechar mesa</button></a>
       </div>
     </div>
@@ -91,7 +92,8 @@
         echo "<div class='col-md-3'>";
           echo "<h5>" . "R$ " . $value[0]['precoProduto'] . "</h5>";
           echo "</div>";
-          echo"<i class='fas fa-trash'></i>";
+          //arrumar isso aqui antes de enviar
+          echo"<a id='arrumarHref' href='/cartapagaritem/'><i class='fas fa-trash'></i></a>";
         echo "<div class='color-group'>";
         echo "</div>";
       echo "</div>";
