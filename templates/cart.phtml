@@ -73,8 +73,9 @@
     </div>
 
     <?php
+      $contador = 0;
     foreach ($_SESSION['produtos'] as $key => $value) {
-
+      $valorKey = $key;
       echo "<div class='row p-3 effects'>";
         echo "<div class='col-md-3'>";
           echo "<img id='imgCart' src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";
@@ -92,12 +93,12 @@
         echo "<div class='col-md-3'>";
           echo "<h5>" . "R$ " . $value[0]['precoProduto'] . "</h5>";
           echo "</div>";
-          //arrumar isso aqui antes de enviar
-          echo"<a id='arrumarHref' href='/cartapagaritem/'><i class='fas fa-trash'></i></a>";
-        echo "<div class='color-group'>";
-        echo "</div>";
-      echo "</div>";
-      
+          echo"<a id='arrumarHref' href='/cartapagaritem/". $contador  ."'><i class='fas fa-trash'></i></a>";
+          echo "<div class='color-group'>";
+          echo "</div>";
+          echo "</div>";
+          $contador +=1;
+
     }
     ?>
    

@@ -53,24 +53,40 @@ return function (App $app) {
             $_SESSION['totalCompra'] = $somaTotal;
         }
 
-
-
-        $_SESSION['compraUltimoProduto'][] = $args['idproduto'];
-
-
         return $container->get('renderer')->render($response, 'cart.phtml', $args);
     });
 
     //apagar item selecionado do carrinho 
     //terminar antes de enviar
-    //$app->get('/cartapagaritem/', function (Request $request, Response $response, array $args) use ($container) {
-    // Sample log message
-    //       $container->get('logger')->info("Slim-Skeleton '/' route");
 
-    //    session_destroy();
 
-    //   return $response->withRedirect('http://localhost:8888');
-    //   });
+    //implementar depois
+
+
+
+
+
+    $app->get('/cartapagaritem/[{contador}]', function (Request $request, Response $response, array $args) use ($container) {
+        //Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+        // função para apagar o item do carrinho
+
+
+
+        unset($_SESSION['produtos'][$args['contador']]);
+
+
+
+
+
+        return $container->get('renderer')->render($response, 'cart.phtml', $args);
+    });
+
+
+
+
+
+
 
     $app->get('/cartlimpar/', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
@@ -89,8 +105,17 @@ return function (App $app) {
         $conexao = $container->get('pdo');
 
 
-        $conexao->query("INSERT INTO pedido (idProduto, precoPedido) VALUES (" . (int) $_SESSION['idProdutoCarrinho'] . ", " . (float) $_SESSION['totalCompra'] . ")");
 
+        $resultSet = $conexao->query("INSERT INTO pedido (precoPedido) VALUES (" . (float) $_SESSION['totalCompra'] . ")");
+
+        $pedidoUltimoId = $conexao->lastInsertId();
+
+        foreach ($_SESSION['produtos'] as $key => $value) {
+            $pedidoUltimoIdProduto = $_SESSION[$key]['idProduto'];
+
+            $resultSet = $conexao->query("INSERT INTO pedidoproduto (idPedido,idProduto) VALUES (" . (int) $pedidoUltimoId . "," . (int) $value[0]['idProduto'] . ")");
+        }
+        session_destroy();
 
         return $response->withRedirect('http://localhost:8888');
     });
