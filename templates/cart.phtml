@@ -47,29 +47,6 @@
                 <hr>
                 <p>Para concluir o pagamento, dirija-se ao caixa.
         </div>
-        <div class="col-12">
-
-        <?php 
-
-if( !session_id() )
-{
-    session_start();
-}
-
-if(@$_SESSION['logged_in'] == true){
-    header("Location: home.php");
-}
-?>
-
-
-<div style="display:none" id="result"></div>
-	<div class="selector" id="webcamimg" onclick="setwebcam()" align="left" ></div>
-		<div class="selector" id="qrimg" onclick="setimg()" align="right" ></div>
-			<center id="mainbody"><div id="outdiv"></div></center>
-				<canvas id="qr-canvas" width="800" height="400"></canvas>
-
-        
-      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
