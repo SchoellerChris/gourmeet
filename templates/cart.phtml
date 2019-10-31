@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Carrinho Gourmeet</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/cart.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/vendor/fontawesome/css/fontawesome.min.css">
-  <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
   
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <head>
+    <title>Carrinho Gourmeet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="qrCode/main.js"></script>
+    <script type="text/javascript" src="qrCode/llqrcode.js"></script>
   
 </head>
 
@@ -36,7 +36,7 @@
           </p>
         </div>
         <div class="col-12">
-          <h3>Valor total da compra:</h3>
+          <h3>Valor total do pedido:</h3>
         </div>
         <div class="col-12">
           <?php
@@ -47,6 +47,29 @@
                 <hr>
                 <p>Para concluir o pagamento, dirija-se ao caixa.
         </div>
+        <div class="col-12">
+
+        <?php 
+
+if( !session_id() )
+{
+    session_start();
+}
+
+if(@$_SESSION['logged_in'] == true){
+    header("Location: home.php");
+}
+?>
+
+
+<div style="display:none" id="result"></div>
+	<div class="selector" id="webcamimg" onclick="setwebcam()" align="left" ></div>
+		<div class="selector" id="qrimg" onclick="setimg()" align="right" ></div>
+			<center id="mainbody"><div id="outdiv"></div></center>
+				<canvas id="qr-canvas" width="800" height="400"></canvas>
+
+        
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
@@ -56,39 +79,39 @@
     </div>
   </div>
 </div>
-    <div class="row p-4 bg-mobile">
-      <div class="col-md-12 col-sm-12">
-        <h2 id="tituloCart" class="text-success">Detalhes do pedido</h2>
+<div class="row p-4 bg-mobile">
+  <div class="col-md-12 col-sm-12">
+    <h2 id="tituloCart" class="text-success">Detalhes do pedido</h2>
+  </div>
+  <div class="col-12" id="divDosBotoes">
+    <div class="row" id="botoesCompra">
+      <div class="col-xl-1 col-md-2 col-sm-2 col-3 col-lg-1">
+        <a href="../index.html"><button type="button" class="btn btn-custom pull-right btn-custom">Voltar</button></a>
       </div>
-      <div class="col-12" id="divDosBotoes">
-        <div class="row" id="botoesCompra">
-          <div class="col-xl-1 col-md-2 col-sm-2 col-3 col-lg-1">
-            <a href="../index.html"><button type="button" class="btn btn-custom pull-right btn-custom">Voltar</button></a>
-          </div>
-          <div class="col-xl-11 col-md-10 col-sm-10 col-9 col-lg-11">
-            <button type="button" class="btn btn-custom pull-right btn-custom" data-toggle="modal" data-target="#modalExemplo">Finalizar</button>
-          </div>
-        </div>
+      <div class="col-xl-11 col-md-10 col-sm-10 col-9 col-lg-11">
+        <button type="button" class="btn btn-custom pull-right btn-custom" data-toggle="modal" data-target="#modalExemplo">Finalizar</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <?php
+<?php
       $contador = 0;
-    foreach ($_SESSION['produtos'] as $key => $value) {
-      $valorKey = $key;
-      echo "<div class='row p-3 effects'>";
+      foreach ($_SESSION['produtos'] as $key => $value) {
+        $valorKey = $key;
+        echo "<div class='row p-3 effects'>";
         echo "<div class='col-md-3'>";
-          echo "<img id='imgCart' src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";
+        echo "<img id='imgCart' src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";
         echo "</div>";
         echo "<div class='col-md-2'>";
-         echo "<h4>" . $value[0]['nomeProduto'] . "</h4>";
+        echo "<h4>" . $value[0]['nomeProduto'] . "</h4>";
         echo "</div>";
         echo "<div id='quantidadeCart'class='col-md-1 col-sm-1 col-1'>";
-          echo "<div>";
-            echo "<span class='minus bg-dark'>" . "</span>";
-            echo "<input id='quantidade' type='number' class='count form-control' name='qty' value='".$value[0]['qtdProduto']."'>";
-            echo "<span class='plus bg-dark'>"."</span>";
-          echo "</div>";
+        echo "<div>";
+        echo "<span class='minus bg-dark'>" . "</span>";
+        echo "<input id='quantidade' type='number' class='count form-control' name='qty' value='".$value[0]['qtdProduto']."'>";
+        echo "<span class='plus bg-dark'>"."</span>";
+        echo "</div>";
         echo "</div>";
         echo "<div class='col-md-3'>";
           echo "<h5>" . "R$ " . $value[0]['precoProduto'] . "</h5>";
@@ -98,13 +121,15 @@
           echo "</div>";
           echo "</div>";
           $contador +=1;
-
-    }
-    ?>
+          
+        }
+        ?>
    
   </div>
 </body>
 
 
 
+<script type="text/javascript">load();</script>
+<script src="qrCode/jquery-1.11.2.min.js"></script>
 </html>
