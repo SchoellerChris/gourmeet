@@ -73,9 +73,9 @@
     </div>
 
     <?php
-      $contador = 0;
     foreach ($_SESSION['produtos'] as $key => $value) {
       $valorKey = $key;
+      $contador = $valorKey;
       echo "<div class='row p-3 effects'>";
         echo "<div class='col-md-3'>";
           echo "<img id='imgCart' src='" . $value[0]['imgProduto'] . "' class='img-responsive'>";

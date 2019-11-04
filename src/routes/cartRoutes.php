@@ -71,10 +71,20 @@ return function (App $app) {
         $container->get('logger')->info("Slim-Skeleton '/' route");
         // função para apagar o item do carrinho
 
-
-
+        
+        
+        
+        $_SESSION['produtos'][$args['contador']][0]['precoProduto'] = 0;
+        
+        
         unset($_SESSION['produtos'][$args['contador']]);
+        
 
+       
+        
+        
+
+        
 
 
 
