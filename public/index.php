@@ -29,6 +29,8 @@ $routes = require __DIR__ . '/../src/routes/cartRoutes.php';
 $routes($app);
 $routes = require __DIR__ . '/../src/routes/cadastroMesaRoute.php';
 $routes($app);
+$routes = require __DIR__ . '/../src/routes/pagamentoRoutes.php';
+$routes($app);
 
 
 // Run app

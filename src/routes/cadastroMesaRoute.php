@@ -13,7 +13,7 @@ return function (App $app) {
             
             $params = $request -> getParsedBody();
             
-            $_SESSION['mesaUsuario'] = $params;
+          
             
             $_SESSION['nomeDoCliente']= $params['numeroMesa'];
             $_SESSION['numeroDaMesa'] = $params['nomeCliente'];
@@ -23,7 +23,7 @@ return function (App $app) {
                 //mensagem de erro
             }
             else {
-                //post no banco e altera estatus da mesa
+                return $response->withRedirect('http://localhost:9898');
             }
             
             

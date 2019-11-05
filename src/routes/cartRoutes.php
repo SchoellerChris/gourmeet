@@ -127,6 +127,6 @@ return function (App $app) {
         }
         session_destroy();
 
-        return $response->withRedirect('http://localhost:8888');
+        return $response->withRedirect('http://localhost:9898/login/');
     });
 };

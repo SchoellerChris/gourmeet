@@ -263,7 +263,7 @@ input{
     border: 0;
     width: 2%;
 }
-nput::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -402,7 +402,7 @@ html {
     transform: scale(0.95);
   }
   
-  input[type=text] {
+  input,input[type=text] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -423,12 +423,12 @@ html {
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus {
+  input,select[type=text]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
   
-  input[type=text]:placeholder {
+  input,select[type=text]:placeholder {
     color: #cccccc;
   }
   
@@ -548,4 +548,10 @@ html {
   #icon {
     width:30%;
   }
-  
+  #mesas{
+    border-radius: 5px;
+    width: 85% ;
+    border: 0;
+    height: 50px;
+    background-color: #f6f6f6;
+  }

@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/vendor/fontawesome/css/fontawesome.min.css">
   <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
-    <title>Bem vindo ao Gourmeet</title>
+  <title>Bem vindo ao Gourmeet</title>
 </head>
+
 <body>
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="https://static.wixstatic.com/media/c1a17e_7574a21c52e44a5095422ae0bb030303.png/v1/fill/w_237,h_147,al_c,q_80,usm_0.66_1.00_0.01/c1a17e_7574a21c52e44a5095422ae0bb030303.webp" id="icon" alt="User Icon" />
-      <h1>Gourmeet</h1>
-    </div>
+      <div class="fadeIn first">
+        <img src="https://static.wixstatic.com/media/c1a17e_7574a21c52e44a5095422ae0bb030303.png/v1/fill/w_237,h_147,al_c,q_80,usm_0.66_1.00_0.01/c1a17e_7574a21c52e44a5095422ae0bb030303.webp" id="icon" alt="User Icon" />
+        <h1>Gourmeet</h1>
+      </div>
 
-    <!-- Login Form -->
-    <form action="/homepage/" method="post">
-      <input type="text" id="nomeCliente" class="fadeIn second" name="nomeCliente" placeholder="Qual o seu nome?">
-      <input type="text" id="numeroMesa" class="fadeIn third" name="numeroMesa" placeholder="Por favor, informe sua mesa!">
-      <input type="submit" class="fadeIn fourth" value="Iniciar">
-    </form>
+      <form action="/homepage/" method="post">
+        <input type="text" id="nomeCliente" required="required" pattern="[a-z\s]+$" class="fadeIn second" name="nomeCliente" placeholder="Qual o seu nome?">
+        <select name="mesas" id="mesas" class="">
+          
+          
+          <?php
     
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover">Christian, Bernardo e Brian</a>
-    </div>
+    echo "<option value=0>Informe o número da sua mesa</option>";
+          foreach ($mesas as $key => $value) {
+            echo "<option name='numeroMesa' required='required' value='" . $value['numeroMesa'] . "'>" . $value['numeroMesa'] . "</option>";
+          }
 
+          ?>
+        </select>
+        <input type="submit" class="fadeIn fourth" value="Iniciar">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover">Christian, Bernardo e Brian</a>
+      </div>
+
+    </div>
   </div>
-</div>
 </body>
+
 </html>
