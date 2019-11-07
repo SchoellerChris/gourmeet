@@ -1,180 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
-    <link rel="stylesheet" href="/css/style.css">
     
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/jquery/jquery.js"></script>       
+        
+        <title>Gourmeet - Cardápio</title>
+    </head>
     
-    <title>Gourmeet - Cardápio</title>
-</head>
+    <body>
+        
+        <div class="container-fluid">
+        
+            <div class="row">
+            <div id="fora" class="col-sm-5 col-md-6 col-lg-5 col-xl-5">
 
-<body>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div id="fora" class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-
-                <div  class="row text-white cardapio">
+                <div class="row text-white cardapio">
                     <div class="col-12 m-2 pb-3 pt-3 pr-2 menu">
-                        <h1 class="titulo">Cardápio</h1>
-
+                        <a href="/">
+                            <h1 class="titulo">Cardápio</h1>
+                        </a>
+                
                     </div>
-                    
+
                     <?php
-                        foreach ($categoriaId as $key => $value) {
-                            echo "<div class='col-12 menus'>";
-                            echo "<a href='/".$value['idCategoria']."'>";
-
-                            echo "<h4 class='p-3'>";
-
-                            echo $value['nomeCategoria'];
-
-                            echo "</h4>";
-                            
-                            
-                            
-                            echo "</a>";
-                            echo "</div>";
-                        }
+                    foreach ($categorias as $key => $value) {
+                        echo "<div class='col-12 menus'>";
+                        echo "<a href='/" . $value['idCategoria'] . "'>";
+                        echo "<h4 class='p-3'>";
+                        echo $value['nomeCategoria'];
+                        echo "</h4>";
+                        echo "</a>";
+                        echo "</div>";
+                    }
                     ?>
                 </div>
             </div>
-                        
-            
+
 
             <!-- div da imagens e descrição dos pratos -->
-
-
-
-            <div id="cardapio2" class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <div id="cardapio2" class="col-sm-7 col-md-6 col-lg-7 col-xl-7">
                 <div class="row">
                     <div class="col-12" id="pratos">
                         <div class="col-12 pt-5">
                             <?php
-                            if($categoriaId = 1){
-                                echo  "<h1 class='titulo'>".$value['nomeCategoria[1]']."</h1>";
-                            }
+                                echo  "<h1 class='titulo'>".$categoriaAtual[0]['nomeCategoria']."</h1>";
+                            ?>
 
+                            <a href="cartview/">
+                                <i class="fas fa-shopping-cart mr-5"></i>
+                                
+                            </a>
 
-                            
-
-
-                        ?>
-                            <h1 class="titulo"></h1>
-                             <a href="cart/"> 
-                            <i class="fas fa-shopping-cart mr-5"></i> </a>
                             <div class="row">
                                 <div class="col-12 p-3 pt-5">
                                     <div class="row">
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4" src="img/Tainha-Assada-20-610x300.jpg"
-                                                alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Tainha ao alho</h3>
-                                            <p>123123123123123123123123123123123123123123123123123123123123</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4"
-                                                src="salteado.jpg" alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Batatas salteadas</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestias
-                                                recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                numquam pariatur culpa architecto quaerat officiis quasi nisi vero error
-                                                ratione dignissimos!</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4  p-1">
-                                            <img class="imagensComidas pb-4 pb-4" src="img/anteprima-piadina.jpg"
-                                                alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Piadina de Parma</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestias
-                                                recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                numquam pariatur culpa architecto quaerat officiis quasi nisi vero error
-                                                ratione dignissimos!</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4"
-                                                src="img/17_39_10_794_filet_poivre_610.jpg" alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Filet au poivre</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestias
-                                                recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                numquam pariatur culpa architecto quaerat officiis quasi nisi vero error
-                                                ratione dignissimos!</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4"
-                                                src="img/frango_parmegiana-600x400.jpg" alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Frango à parmegiana</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestias
-                                                recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                numquam pariatur culpa architecto quaerat officiis quasi nisi vero error
-                                                ratione dignissimos!</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4"
-                                                src="img/principal-impresso-michelpeixetomates.jpg" alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <h3>Aspargos tostados</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestias
-                                                recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                numquam pariatur culpa architecto quaerat officiis quasi nisi vero error
-                                                ratione dignissimos!</p>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 p-1">
-                                            <img class="imagensComidas pb-4 pb-4" src="img/318348_original.jpg"
-                                                alt="comidas">
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="col-12">
-                                                <h3>Salmão Grelhado</h3>
-                                            </div>
-                                            <div class="col-12">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                                                    molestias
-                                                    recusandae incidunt blanditiis accusamus alias, neque maiores fuga
-                                                    numquam pariatur culpa architecto quaerat officiis quasi nisi vero
-                                                    error
-                                                    ratione dignissimos!</p>
-                                            </div>
-                                            <div class="col-12 botao">
-                                                <button type="button" class="btn btn-primary">Adicionar</button>
-                                            </div>
+                                        <?php
+                                        foreach ($produtos as $key => $value) {
+                                            
+                                            echo "<div class='col-4 p-1'>";
+                                            echo "<img class='imagensComidas pb-4' src='".$value['imgProduto'] ."'>";
+                                            echo "</div>";
+                                            echo "<div class='col-8'>";
+                                            echo "<h3>";
+                                            echo $value['nomeProduto'];
+                                            echo "</h3>";
+                                            echo "<p>";
+                                            echo $value['descProduto']."Lorem ipsum dolor sit amet, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+                                            echo "</p>";
+                                            echo "</div>";
+                                            echo "<div class='col-12 botao pb-5'>";
+                                            echo "<label class= 'mr-4'>";
+                                            echo "R$ " .$value['precoProduto'];
+                                            echo "</label>";
+                                            echo "<a href='/cart/".$value['idProduto']."' class='btn btn-primary'>";
+                                            echo "Adicionar";
+                                            echo "</a>";
+                                            echo "</div>";
+                                        }
+                                        ?>
 
-                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -182,16 +97,13 @@
                 </div>
             </div>
 
-
         </div>
 
-
-
     </div>
-
+    
 </body>
-<script src="vendor/jquery/jquery-3.4.1.min.js"></script>
-<script src="vendor/bootstrap/css/bootstrap.min.css"></script>
-<script src="vendor/fontawesome/css/fontawesome.min.css"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/jquery/script.js"></script>
 
 </html>
