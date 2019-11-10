@@ -49,11 +49,18 @@ return function (App $app) {
     $app->get('/login/', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
 
+        
+        
+        
+        
+        
         $container->get('logger')->info("Slim-Skeleton '/' route");
         $conexao = $container->get('pdo');
 
 
-        $resultSet = $conexao->query('SELECT * FROM mesa')->fetchAll();
+        $resultSet = $conexao->query('SELECT * FROM mesa where status = 0')->fetchAll();
+
+
         $args['mesas']=$resultSet;
 
         // Render index view

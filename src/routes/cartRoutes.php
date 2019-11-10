@@ -24,6 +24,7 @@ return function (App $app) {
         } else {
             return $response->withRedirect('http://localhost:8888');
         }
+       
 
 
 
@@ -36,7 +37,7 @@ return function (App $app) {
         $conexao = $container->get('pdo');
 
 
-        // if (array_search($args['idproduto'], $_SESSION['compraUltimoProduto']) == FALSE) {
+      //   if (array_search($args['idproduto'], $_SESSION['compraUltimoProduto']) == FALSE) {
         // Primeira adição do produto no carrinho
 
         $resultSet = $conexao->query('SELECT * from produto where idProduto =' . $args['idproduto'] . '')->fetchAll();
@@ -114,19 +115,52 @@ return function (App $app) {
         $container->get('logger')->info("Slim-Skeleton '/' route");
         $conexao = $container->get('pdo');
 
+        //print_r($_SESSION['nomeDoCliente']$_SESSION['numeroDaMesa']);
+        //exit();
+
+      
+        $resultSet = $conexao->query("INSERT INTO pedido (precoPedido,idMesa) VALUES (" . (float) $_SESSION['totalCompra'] . ",". $_SESSION['numeroDaMesa'].")");
 
 
-        $resultSet = $conexao->query("INSERT INTO pedido (precoPedido) VALUES (" . (float) $_SESSION['totalCompra'] . ")");
 
         $pedidoUltimoId = $conexao->lastInsertId();
 
+
         foreach ($_SESSION['produtos'] as $key => $value) {
-            $pedidoUltimoIdProduto = $_SESSION[$key]['idProduto'];
+           $pedidoUltimoIdProduto = $_SESSION[$key]['idProduto'];
 
-            $resultSet = $conexao->query("INSERT INTO pedidoproduto (idPedido,idProduto) VALUES (" . (int) $pedidoUltimoId . "," . (int) $value[0]['idProduto'] . ")");
+             
+
+            //    $resultSet = $conexao->query("INSERT INTO pedidoproduto (idPedido,idProduto) VALUES ('" . (int) $pedidoUltimoId . "," . (int) $value[0]['idProduto'] .");");
+               
+           //     $resultSet = $conexao->query("INSERT INTO categoria (nomeCategoria) VALUES ('".$params['categoria']."');");           
+            
+            
+
         }
-        session_destroy();
 
-        return $response->withRedirect('http://localhost:9898/login/');
+
+
+
+
+        
+        //for each pedido confirmado criar em baixo dos outros pedidos os pedidos.
+        //
+        //
+        //
+
+
+
+
+
+
+
+
+
+
+
+
+        session_destroy();
+        return $response->withRedirect('http://localhost:8888/login/');
     });
 };

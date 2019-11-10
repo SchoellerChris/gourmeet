@@ -12,20 +12,33 @@ return function (App $app) {
         $container->get('logger')->info("Slim-Skeleton '/' route");
             
             $params = $request -> getParsedBody();
-            
+            $conexao = $container->get('pdo');
           
             
-            $_SESSION['nomeDoCliente']= $params['numeroMesa'];
-            $_SESSION['numeroDaMesa'] = $params['nomeCliente'];
+            $_SESSION['nomeDoClienteSession'] = $params['nomeDoCliente'];
+            $_SESSION['numeroDaMesaSession']  = $params['mesas'];
             
+            if ($params['mesas']==0) {
+                return $response->withRedirect('http://localhost:8888/login/');
+            }
+            else{
 
-            if (!$_SESSION['numeroDaMesa']) {
-                //mensagem de erro
+                $resultSet = $conexao->query("UPDATE mesa SET status = 1 where numeroMesa = (".$params['mesas'].")");
+                
+                
+                
+                if (!$_SESSION['numeroDaMesaSession']) {
+                    //mensagem de erro
+                }
+                else {
+                    
+                    
+                    //  $resultSet = $conexao->query("INSERT INTO cliente (nome) VALUES ('".$params['nomeDoCliente']."');");
+                    
+                    return $response->withRedirect('http://localhost:8888');
+                }
+                
             }
-            else {
-                return $response->withRedirect('http://localhost:9898');
-            }
-            
             
 
         // Render index view

@@ -26,15 +26,17 @@
       </div>
 
       <form action="/homepage/" method="post">
-        <input type="text" id="nomeCliente" required="required" pattern="[a-z\s]+$" class="fadeIn second" name="nomeCliente" placeholder="Qual o seu nome?">
-        <select name="mesas" id="mesas" class="">
+        <input type="text" id="nomeCliente" required="required" pattern="[a-z\s]+$" class="fadeIn second" name="nomeDoCliente" placeholder="Qual o seu nome?">
+        <select  name="mesas" id="mesas" class="">
           
           
           <?php
     
-    echo "<option value=0>Informe o número da sua mesa</option>";
+    echo "  <option value=0 >Informe o número da sua mesa</option>";
           foreach ($mesas as $key => $value) {
             echo "<option name='numeroMesa' required='required' value='" . $value['numeroMesa'] . "'>" . $value['numeroMesa'] . "</option>";
+          
+          
           }
 
           ?>

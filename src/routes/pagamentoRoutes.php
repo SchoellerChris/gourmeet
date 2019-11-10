@@ -10,10 +10,13 @@ return function (App $app) {
     $app->get('/pagamento/', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
         $container->get('logger')->info("Slim-Skeleton '/' route");
+        $conexao = $container->get('pdo');
 
+        $resultSet = $conexao->query("UPDATE mesa SET status = 0 where numeroMesa = (".$_SESSION['numeroDaMesaSession'].");");
+
+        session_destroy();
         
 
-        // Render index view
-        return $container->get('renderer')->render($response, 'telaPagamento.phtml', $args);
+        return $response->withRedirect('http://localhost:8888/login/');
     });
 };
