@@ -139,28 +139,41 @@ return function (App $app) {
 
         }
 
-
-
-
-
         
         //for each pedido confirmado criar em baixo dos outros pedidos os pedidos.
         //
         //
         //
-
-
-
-
-
-
-
-
-
-
-
-
         session_destroy();
         return $response->withRedirect('http://localhost:8888/login/');
     });
+    $app->get('/pagamento/', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+        $conexao = $container->get('pdo');
+
+       // $resultSet = $conexao->query("UPDATE mesa SET status = 0 where numeroMesa = (".$_SESSION['numeroDaMesaSession'].");");
+
+        session_destroy();
+        
+
+        //return $response->withRedirect('http://localhost:8888/login/');
+        return $container->get('renderer')->render($response, 'pagamento.phtml', $args);
+
+    });
+    $app->get('/confirmado/', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+        $conexao = $container->get('pdo');
+
+       //$resultSet = $conexao->query("UPDATE mesa SET status = 0 where numeroMesa = (".$_SESSION['numeroDaMesaSession'].");");
+
+        session_destroy();
+        
+
+        return $response->withRedirect('http://localhost:8888/login/');
+      
+
+    });
+
 };
