@@ -22,10 +22,10 @@ return function (App $app) {
 
     $container['pdo'] = function ($c) {
         // better load the settings with $container->get('settings')
-        $host = '127.0.0.1';
-        $dbname = 'gourmeet';
-        $username = 'root';
-        $password = '';
+        $host = 'localhost';
+        $dbname = 'id11481045_gourmeet';
+        $username = 'id11481045_root';
+        $password = '12345';
         $charset = 'utf8';
         $collate = 'utf8_unicode_ci';
         $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";

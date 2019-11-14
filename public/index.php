@@ -16,21 +16,20 @@ session_start();
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
-
 // Set up dependencies
 $dependencies = require __DIR__ . '/../src/dependencies.php';
 $dependencies($app);
-
 // Register middleware
 $middleware = require __DIR__ . '/../src/middleware.php';
 $middleware($app);
-
 // Register routes
 $routes = require __DIR__ . '/../src/routes/homePageRoutes.php';
 $routes($app);
-
 $routes = require __DIR__ . '/../src/routes/cartRoutes.php';
 $routes($app);
+$routes = require __DIR__ . '/../src/routes/cadastroMesaRoute.php';
+$routes($app);
+
 
 
 // Run app

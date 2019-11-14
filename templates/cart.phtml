@@ -45,13 +45,14 @@
           </div>
               <div class="col-12">
                 <hr>
-                <p>Para concluir o pagamento, dirija-se ao caixa.
+            <img src="/qrcode.png">
+              
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
         <a href="/salvarpedido/"><button type="button" class="btn btn-primary">Confirmar Pedido</button></a>
-        <a href="/cartlimpar/"><button type="button" class="btn btn-primary">Fechar mesa</button></a>
+        <a href="/pagamento/"><button type="button" class="btn btn-primary">Pagamento</button></a>
       </div>
     </div>
   </div>
@@ -63,7 +64,7 @@
       <div class="col-12" id="divDosBotoes">
         <div class="row" id="botoesCompra">
           <div class="col-xl-1 col-md-2 col-sm-2 col-3 col-lg-1">
-            <a href="../index.html"><button type="button" class="btn btn-custom pull-right btn-custom">Voltar</button></a>
+            <a href="/"><button type="button" class="btn btn-custom pull-right btn-custom">Voltar</button></a>
           </div>
           <div class="col-xl-11 col-md-10 col-sm-10 col-9 col-lg-11">
             <button type="button" class="btn btn-custom pull-right btn-custom" data-toggle="modal" data-target="#modalExemplo">Finalizar</button>
@@ -86,7 +87,7 @@
         echo "<div id='quantidadeCart'class='col-md-1 col-sm-1 col-1'>";
           echo "<div>";
             echo "<span class='minus bg-dark'>" . "</span>";
-            echo "<input id='quantidade' type='number' class='count form-control' name='qty' value='".$value[0]['qtdProduto']."'>";
+            
             echo "<span class='plus bg-dark'>"."</span>";
           echo "</div>";
         echo "</div>";

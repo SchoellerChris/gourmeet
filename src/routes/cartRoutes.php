@@ -22,8 +22,9 @@ return function (App $app) {
             }
             $_SESSION['totalCompra'] = $soma;
         } else {
-            return $response->withRedirect('http://localhost:8888');
+            return $response->withRedirect('/');
         }
+       
 
 
 
@@ -36,7 +37,7 @@ return function (App $app) {
         $conexao = $container->get('pdo');
 
 
-        // if (array_search($args['idproduto'], $_SESSION['compraUltimoProduto']) == FALSE) {
+      //   if (array_search($args['idproduto'], $_SESSION['compraUltimoProduto']) == FALSE) {
         // Primeira adição do produto no carrinho
 
         $resultSet = $conexao->query('SELECT * from produto where idProduto =' . $args['idproduto'] . '')->fetchAll();
@@ -104,7 +105,7 @@ return function (App $app) {
 
         session_destroy();
 
-        return $response->withRedirect('http://localhost:8888');
+        return $response->withRedirect('http://localhost:8888/login/');
     });
 
 
@@ -114,19 +115,61 @@ return function (App $app) {
         $container->get('logger')->info("Slim-Skeleton '/' route");
         $conexao = $container->get('pdo');
 
+       
+
+      
+$resultSet = $conexao->query("INSERT INTO pedido (precoPedido,idMesa,nomeCliente) VALUES ('" . (float) $_SESSION['totalCompra'] . "','". $_SESSION['numeroDaMesaSession']."','".$_SESSION['nomeDoClienteSession']."')");
 
 
-        $resultSet = $conexao->query("INSERT INTO pedido (precoPedido) VALUES (" . (float) $_SESSION['totalCompra'] . ")");
 
         $pedidoUltimoId = $conexao->lastInsertId();
 
+
         foreach ($_SESSION['produtos'] as $key => $value) {
-            $pedidoUltimoIdProduto = $_SESSION[$key]['idProduto'];
+           $pedidoUltimoIdProduto = $_SESSION[$key]['idProduto'];
 
-            $resultSet = $conexao->query("INSERT INTO pedidoproduto (idPedido,idProduto) VALUES (" . (int) $pedidoUltimoId . "," . (int) $value[0]['idProduto'] . ")");
+             
+
+               $resultSet = $conexao->query("INSERT INTO pedidoproduto (idPedido,idProduto) VALUES (". (int) $pedidoUltimoId . "," . (int) $value[0]['idProduto'] .");");
+               
+          
+            
+
         }
-        session_destroy();
 
-        return $response->withRedirect('http://localhost:8888');
+        
+        //for each pedido confirmado criar em baixo dos outros pedidos os pedidos.
+        //
+        //
+        //
+
+        return $response->withRedirect('/');
     });
+    $app->get('/pagamento/', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+        $conexao = $container->get('pdo');
+
+
+        return $container->get('renderer')->render($response, 'pagamento.phtml', $args);
+
+    });
+    $app->get('/confirmado/', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+        $conexao = $container->get('pdo');
+        
+        $resultSet = $conexao->query("UPDATE pedido SET statusPagamento = 1 where idMesa = (".$_SESSION['numeroDaMesaSession'].");");
+        
+        
+       $resultSet = $conexao->query("UPDATE mesa SET status = 0 where numeroMesa = (".$_SESSION['numeroDaMesaSession'].");");
+
+        session_destroy();
+        
+
+        return $response->withRedirect('/login/');
+      
+
+    });
+
 };
